@@ -3,7 +3,6 @@ package main
 import (
     "fmt"
     "html/template"
-    "net/http"
 	
 	"crypto/rand"
 	"encoding/base64"
@@ -11,11 +10,11 @@ import (
 	"io"
 	"log"
 	"net/http"
-	"os"
 	"time"
 
 	"golang.org/x/net/context"
 	"golang.org/x/oauth2"
+	oidc "github.com/coreos/go-oidc/v3/oidc"
 )
 
 var (
