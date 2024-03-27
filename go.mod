@@ -41,4 +41,5 @@ require (
 	golang.org/x/crypto v0.19.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
+	github.com/coreos/go-oidc/v3/oidc  v3.10.0
 )
