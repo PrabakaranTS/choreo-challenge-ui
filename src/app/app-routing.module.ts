@@ -1,19 +1,28 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { Routes, RouterModule } from '@angular/router';
+
+import { ProtectedComponent } from './protected/protected.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent }, // Default route
-  { path: 'about', component: AboutComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: '**', component: NotFoundComponent }, // Wildcard route for 404
+  {
+      path: '',
+      children: []
+  },
+  {
+      path: 'protected',
+      component: ProtectedComponent,
+      canActivate: [AuthGuardService]
+  },
+  {
+    path: 'auth-callback',
+    component: AuthCallbackComponent
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
