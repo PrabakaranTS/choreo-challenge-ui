@@ -1,27 +1,42 @@
-# Client
+# Hello World Go
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+Sample for Hello World web app.
 
-## Development server
+### Prerequisites
+1. Fork the repositoy
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Getting started
 
-## Code scaffolding
+Please refer to the Choreo documentation under the [Develop an Application with Buildpacks](https://wso2.com/choreo/develop-components/deploy-an-application-with-buildpacks) to learn how to deploy the application.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Select `Web Application` Card from Component Creation Wizard
+2. Select `Go` as the buildpack. Fill as follow according to selected Buildpack.
 
-## Build
+    | **Field**             | **Description**                               |
+    |-----------------------|-----------------------------------------------|
+    |Name           | Hello World WebApp              |
+    |Description    | Hello World WebApp        |
+    | **GitHub Account**    | Your account                                  |
+    | **GitHub Repository** | choreo-samples |
+    | **Branch**            | **`main`**                               |
+    | **Buildpack**      | Go|
+    | **Select Go Project Directory**       | hello-world-go-webapp |
+    | **Language Version**              | 1.x |
+    | **Port** | 8080|
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+3. Click Create. Once the component creation is complete, you will see the component overview page.
+4. Deploy the created component
 
-## Running unit tests
+## Execute the Sample Locally
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Navigate to the Go application directory
 
-## Running end-to-end tests
+```bash
+cd hello-world-go-webapp
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run the service
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```shell
+go run main.go
+```
