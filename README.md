@@ -1,28 +1,22 @@
-# Choreo sample web app with angular
+# Choreo sample web app with vue
 
-### Initilized with [Angular CLI](https://angular.io/cli)
+### Initilized with [Vue CLI](https://cli.vuejs.org/guide/creating-a-project.html#vue-create)
 
 ```shell
-npx @angular/cli new angular-spa --defaults
+npx @vue/cli create vue-spa
 ```
-
-### Use the following commands to create BYOI component
-
-- Select Create Component with `Web Application` type.
-- Provide component name and description.
-- Select `Angular SPA` tile and create component.
 
 ### Use the following configuration when creating this component in Choreo:
 
-- Build Pack: WebApp
-- Build Context Path: `angular-single-page-app`
+- Build Pack: **Vue**
+- Build Context Path: `web-apps/vue-spa`
 - Build Command: `npm run build`
-- Build output directory: `dist/angular-single-page-app`
+- Build output directory: `dist`
 - Node Version: `18`
 
 ### Use thr following commands to build and run the app using Docker:
 
 ```shell
-docker build -t angular-spa bring-your-own-image-components/web-apps/angular-spa
-docker run -p 8080:80 angular-spa
+docker build -t vue-spa bring-your-own-image-components/web-apps/vue-spa
+docker run -p 8080:80 vue-spa
 ```
