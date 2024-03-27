@@ -7,8 +7,9 @@ require (
 	github.com/go-jose/go-jose/v4 v4.0.1
 	golang.org/x/net v0.17.0
 	golang.org/x/oauth2 v0.13.0
+	github.com/coreos/go-oidc/v3/oidc v3.10.0
 )
-	
+
 require (
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
