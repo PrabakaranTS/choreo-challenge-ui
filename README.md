@@ -1,28 +1,28 @@
-# Hello World Ruby
+# Choreo sample web app with angular
 
-Sample for Hello World web app.
+### Initilized with [Angular CLI](https://angular.io/cli)
 
-### Prerequisites
-1. Fork the repositoy
+```shell
+npx @angular/cli new angular-spa --defaults
+```
 
-## Getting started
+### Use the following commands to create BYOI component
 
-Please refer to the Choreo documentation under the [Develop an Application with Buildpacks](https://wso2.com/choreo/develop-components/deploy-an-application-with-buildpacks) to learn how to deploy the application.
+- Select Create Component with `Web Application` type.
+- Provide component name and description.
+- Select `Angular SPA` tile and create component.
 
-1. Select `Web Application` Card from Component Creation Wizard
-2. Select `Ruby` as the buildpack. Fill as follow according to selected Buildpack.
+### Use the following configuration when creating this component in Choreo:
 
-    | **Field**             | **Description**                               |
-    |-----------------------|-----------------------------------------------|
-    |Name           | Hello World Ruby WebApp              |
-    |Description    | Hello World Ruby WebApp       |
-    | **GitHub Account**    | Your account                                  |
-    | **GitHub Repository** | choreo-samples |
-    | **Branch**            | **`main`**                               |
-    | **Buildpack**      | Ruby|
-    | **Select Go Project Directory**       | hello-world-ruby-webapp |
-    | **Select Language Version**              | 3.1.x |
-    | **Port** | 8080|
+- Build Pack: WebApp
+- Build Context Path: `angular-single-page-app`
+- Build Command: `npm run build`
+- Build output directory: `dist/angular-single-page-app`
+- Node Version: `18`
 
-3. Click Create. Once the component creation is complete, you will see the component overview page.
-4. Deploy the created component
+### Use thr following commands to build and run the app using Docker:
+
+```shell
+docker build -t angular-spa bring-your-own-image-components/web-apps/angular-spa
+docker run -p 8080:80 angular-spa
+```
