@@ -1,31 +1,46 @@
+# Copyright (c) 2023, WSO2 LLC. (https://www.wso2.com/) All Rights Reserved.
 #
-# Copyright (C) 2016 Curity AB. All rights reserved.
+# WSO2 LLC. licenses this file to you under the Apache License,
+# Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License.
+# You may obtain a copy of the License at
 #
-# The contents of this file are the property of Curity AB.
-# You may not copy or use this file, in either source code
-# or executable form, except in compliance with terms
-# set by Curity AB.
+#    http://www.apache.org/licenses/LICENSE-2.0
 #
-# For further information, please contact Curity AB.
-#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations
+# under the License.
 
-FROM python:3.9
-MAINTAINER Curity AB
+# Use an official Node.js runtime as the base image
+FROM node:18 AS build
 
-ADD requirements.txt /usr/src/
-RUN pip install --no-cache-dir -r /usr/src/requirements.txt
-WORKDIR /oidc-example
-EXPOSE 5443
+# Set the working directory in the container
+WORKDIR /app
 
-RUN mkdir -p /oidc-example
-ADD static /oidc-example/static
-ADD templates /oidc-example/templates
+# Copy the package.json and package-lock.json to the container
+COPY package*.json ./
 
-# Empty conf
-RUN echo "{}" >> /oidc-example/settings.json
+# Install the application dependencies
+RUN npm install
 
-# Most likely to be updated, do this last to not have to rebuild other layers
-ADD *.py /oidc-example/
+# Copy the entire Angular app source code to the container
+COPY . .
 
-CMD ["python", "app.py"]
+# Build the Angular application for production
+RUN npm run build 
 
+# Use a lightweight Nginx image as the final image
+FROM nginx:alpine
+
+# Copy the built Angular app from the previous stage to the Nginx web server directory
+COPY --from=build /app/dist/angular-spa /usr/share/nginx/html
+COPY nginx/default.conf /etc/nginx/conf.d/
+
+# Expose port 80 for serving the web application
+EXPOSE 80
+
+# Start the Nginx web server when the container runs
+CMD ["nginx", "-g", "daemon off;"]
