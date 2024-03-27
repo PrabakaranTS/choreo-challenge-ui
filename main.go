@@ -14,7 +14,7 @@ import (
 
 	"golang.org/x/net/context"
 	"golang.org/x/oauth2"
-	"choreo-challenge-ui/oidc"
+	"../oidc"
 )
 
 var (
