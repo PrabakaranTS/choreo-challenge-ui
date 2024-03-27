@@ -116,7 +116,7 @@ func main() {
 
 	ctx := context.Background()
 
-	provider, err := oidc.NewProvider(ctx, "https://api.asgardeo.io/t/prabakaran/oauth2/authorize")
+	provider, err := oidc.NewProvider(ctx, "https://api.asgardeo.io/t/prabakaran/oauth2/token")
 	if err != nil {
 		log.Fatal(err)
 	}
