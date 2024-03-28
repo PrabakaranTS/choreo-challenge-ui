@@ -1,50 +1,22 @@
-# oidc-demoapp-vue
-OpenID Connect (OIDC) VueJS demo application using [oidc-client](https://github.com/IdentityModel/oidc-client-js) library.
-Authentication flow data is handled by Vuex.
+# Choreo sample web app with vue
 
-Supports:
-* OpenID Connect Authentication (Authorization Code flow with PCKE)
-* Token Negotiation
-* OAuth API Call
+### Initilized with [Vue CLI](https://cli.vuejs.org/guide/creating-a-project.html#vue-create)
 
-In order to test the API call, you can use our [OAuth demo API](https://github.com/Identicum/oauth-demoapi-spring).
-
-## Run
-
-### Run as Docker
-```
-docker run -d \
-	--name oidc-demoapp-vue \
-	-p xxxx:80 \
-	-e VUE_APP_OIDC_PROVIDER_DOMAIN=https://idp.domain.com \
-	-e VUE_APP_CLIENT_ID=my_client_id \
-	-e VUE_APP_API_URL=http://localhost:8081/api/v1/products \
-	identicum/oidc-demoapp-vue:latest
+```shell
+npx @vue/cli create vue-spa
 ```
 
-### Run locally
+### Use the following configuration when creating this component in Choreo:
 
-#### Clone repository
+- Build Pack: **Vue**
+- Build Context Path: `web-apps/vue-spa`
+- Build Command: `npm run build`
+- Build output directory: `dist`
+- Node Version: `18`
+
+### Use thr following commands to build and run the app using Docker:
+
+```shell
+docker build -t vue-spa bring-your-own-image-components/web-apps/vue-spa
+docker run -p 8080:80 vue-spa
 ```
-git clone git@github.com:https://github.com/Identicum/oidc-demoapp-vue.git
-```
-
-#### Configure
-
-- Adjust the oidc client parameters in [oidc-client.js](src/oidc/oidc-client.js)
-- Adjust the API endpoint URL in [Home.vue.js](src/views/Home.vue)
-
-#### Execute
-```
-npm run serve
-```
-
-- You can access to the UI on http://hostname:8080/
-
-## Screenshots
-
-![App login](src/assets/screenshot-login.png)
-
-![App menu](src/assets/screenshot-home.png)
-
-![App tokens](src/assets/screenshot-tokens.png)
